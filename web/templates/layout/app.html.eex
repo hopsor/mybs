@@ -12,7 +12,8 @@
   </head>
 
   <body>
-    <div class="container">
+    <div id="elm-main"></div>
+    <!-- <div class="container">
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
@@ -29,7 +30,7 @@
         <%= render @view_module, @view_template, assigns %>
       </main>
 
-    </div> <!-- /container -->
+    </div> -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

@@ -15,6 +15,8 @@ RUN apt-get update && apt-get upgrade -y && \
 # See http://www.phoenixframework.org/docs/installation#section-node-js-5-0-0-
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && apt-get install -y nodejs
 
+RUN npm install -g elm
+
 # download and install Erlang package
 RUN wget http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb \
  && dpkg -i erlang-solutions_1.0_all.deb \
