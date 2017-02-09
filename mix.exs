@@ -19,7 +19,7 @@ defmodule Mybs.Mixfile do
   def application do
     [mod: {Mybs, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :extrava]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +37,9 @@ defmodule Mybs.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:poison, "~> 3.1", override: true}, # Safe according to Jose Valim https://elixirforum.com/t/phoenix-does-not-support-poison-3-0/2256/6
+     {:extrava, git: "https://github.com/hopsor/extrava.git"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
