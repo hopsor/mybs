@@ -11,6 +11,7 @@ defmodule Mybs.Repo.Migrations.CreateRace do
       add :max_speed, :float
       add :average_heartrate, :float
       add :max_heartrate, :float
+      add :strava_id, :integer
 
       timestamps()
     end
