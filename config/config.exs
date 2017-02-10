@@ -24,7 +24,7 @@ config :logger, :console,
 
 config :quantum, :mybs,
   cron: [
-    "*/5 * * * *": {Mybs.RaceFetcher, :fetch}
+    "*/5 * * * *": {Mybs.RaceFetcher, :start}
   ]
 
 # Import environment specific config. This must remain at the bottom

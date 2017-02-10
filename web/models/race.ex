@@ -10,6 +10,7 @@ defmodule Mybs.Race do
     field :max_speed, :float
     field :average_heartrate, :float
     field :max_heartrate, :float
+    field :strava_id, :integer
 
     timestamps()
   end
@@ -19,7 +20,7 @@ defmodule Mybs.Race do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:distance, :elapsed_time, :moving_time, :started_at, :average_speed, :max_speed, :average_heartrate, :max_heartrate])
+    |> cast(params, [:distance, :elapsed_time, :moving_time, :started_at, :average_speed, :max_speed, :average_heartrate, :max_heartrate, :strava_id])
     |> validate_required([:distance, :elapsed_time, :moving_time, :started_at, :average_speed, :max_speed])
   end
 end
