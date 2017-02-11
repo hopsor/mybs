@@ -18,6 +18,7 @@ defmodule Mybs.Router do
 
     get "/", PageController, :index
     get "/design", PageController, :design
+    get "/race_chart", PageController, :race_chart
   end
 
   # Other scopes may use custom stacks.
