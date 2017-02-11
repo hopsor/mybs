@@ -21,7 +21,8 @@ defmodule Mybs.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Mybs do
-  #   pipe_through :api
-  # end
+  scope "/api", Mybs.Api, as: :api do
+    pipe_through :api
+    resources "/races", RaceController, only: [:index]
+  end
 end

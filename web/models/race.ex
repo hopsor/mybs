@@ -1,6 +1,8 @@
 defmodule Mybs.Race do
   use Mybs.Web, :model
 
+  @derive {Poison.Encoder, only: [:started_at, :distance]}
+
   schema "races" do
     field :distance, :float
     field :elapsed_time, :integer
