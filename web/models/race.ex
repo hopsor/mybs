@@ -10,7 +10,7 @@ defmodule Mybs.Race do
     field :max_speed, :float
     field :average_heartrate, :float
     field :max_heartrate, :float
-    field :strava_id, :integer
+    field :strava_id, :string
 
     timestamps()
   end
