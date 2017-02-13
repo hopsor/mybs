@@ -16,5 +16,6 @@ defmodule Mybs.Repo.Migrations.CreateRace do
       timestamps()
     end
 
+    create unique_index(:races, [:strava_id])
   end
 end

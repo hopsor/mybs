@@ -24,5 +24,6 @@ defmodule Mybs.Race do
     struct
     |> cast(params, [:distance, :elapsed_time, :moving_time, :started_at, :average_speed, :max_speed, :average_heartrate, :max_heartrate, :strava_id])
     |> validate_required([:distance, :elapsed_time, :moving_time, :started_at, :average_speed, :max_speed])
+    |> unique_constraint(:strava_id)
   end
 end
