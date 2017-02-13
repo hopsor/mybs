@@ -33,21 +33,16 @@ function transformDataset(data){
 };
 
 let svg     = d3.select("svg"),
-    width   = svg.attr("width"),
-    height  = svg.attr("height"),
-    margin  = {top: 20, right: 80, bottom: 30, left: 50};
-    //g       = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    margin  = {top: 20, right: 80, bottom: 60, left: 100},
+    width   = svg.attr("width") - margin.left - margin.right,
+    height  = svg.attr("height") - margin.top - margin.bottom,
+    g       = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 let x = d3.scaleTime().rangeRound([0, width]);
 let y = d3.scaleLinear().rangeRound([height, 0]);
 let line = d3.line()
     .x(function(d) { return x(d.f_date); })
     .y(function(d) { return y(d.acum); });
-
-// let xAxis = d3.axisBottom()
-//   .scale(x)
-//   .ticks(d3.time.months)
-//   .tickFormat(d3.time.format("%B"))
 
 let colors = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -56,14 +51,25 @@ d3.json("/api/races", function(data){
   const maxDistance = d3.max(dataset, function(year) { return year.max_distance; });
 
   x.domain([new Date(1900, 0, 1), new Date(1900, 11, 31)]);
-  y.domain([0, maxDistance]);
+  y.domain([0, maxDistance+50000]);
 
-  // svg.append("g")
-  //     .attr("class", "x axis")
-  //     .attr("transform", "translate(0," + height + ")")
-  //     .call(xAxis);
+  g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(
+        d3.axisBottom(x)
+          .tickFormat(
+            d3.timeFormat("%B")
+          )
+      );
 
-  let years = svg.selectAll(".year")
+  g.append("g")
+      .attr("class", "axis axis--y")
+      .call(
+        d3.axisLeft(y).tickFormat(function(d){ return d/1000 + " km"; })
+      );
+
+  let years = g.selectAll(".year")
     .data(dataset)
     .enter()
     .append("g")
@@ -75,6 +81,13 @@ d3.json("/api/races", function(data){
       return line(d.values);
     })
     .style("stroke", function(d){ return colors(d.id); })
-    .style("stroke-width", "2px")
+    .style("stroke-width", "4px")
     .style("fill", "none")
+
+  years.append("text")
+      .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+      .attr("transform", function(d) { return "translate(" + x(d.value.f_date) + "," + y(d.value.acum) + ")"; })
+      .attr("x", 3)
+      .attr("dy", "0.35em")
+      .text(function(d) { return d.id; });
 });

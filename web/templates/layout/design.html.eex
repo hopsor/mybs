@@ -9,6 +9,23 @@
 
     <title>MyBS</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <style>
+
+    svg{
+      margin: 1em;
+      border: 1px solid gray;
+    }
+    svg text {
+      font: 16px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+    </style>
   </head>
 
   <body>
