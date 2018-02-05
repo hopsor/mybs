@@ -30,7 +30,7 @@ defmodule Mybs.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.2.1"},
+    [{:phoenix, "~> 1.3"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.0"},
      {:postgrex, ">= 0.0.0"},
@@ -38,7 +38,7 @@ defmodule Mybs.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:quantum, "~> 1.9"},
+     {:quantum, "~> 2.2"},
      {:poison, "~> 3.1", override: true}, # Safe according to Jose Valim https://elixirforum.com/t/phoenix-does-not-support-poison-3-0/2256/6
      {:extrava, git: "https://github.com/hopsor/extrava.git"}]
   end

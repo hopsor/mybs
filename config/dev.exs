@@ -39,7 +39,7 @@ config :mybs, Mybs.Repo,
   username: "postgres",
   password: "",
   database: "mybs_dev",
-  hostname: "db",
+  hostname: "localhost",
   pool_size: 10
 
 import_config "dev.secret.exs"

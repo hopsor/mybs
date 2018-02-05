@@ -46,7 +46,7 @@ let line = d3.line()
 
 let colors = d3.scaleOrdinal(d3.schemeCategory10);
 
-d3.json("/api/races", function(data){
+d3.json("http://localhost:4000/api/races", function(data){
   const dataset = transformDataset(data);
   const maxDistance = d3.max(dataset, function(year) { return year.max_distance; });
 

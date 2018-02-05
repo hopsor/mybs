@@ -13,7 +13,7 @@ defmodule Mybs do
       # Start the endpoint when the application starts
       supervisor(Mybs.Endpoint, []),
       # Start your own worker by calling: Mybs.Worker.start_link(arg1, arg2, arg3)
-      # worker(Mybs.Worker, [arg1, arg2, arg3]),
+      worker(Mybs.Scheduler, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

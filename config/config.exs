@@ -22,9 +22,9 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :quantum, :mybs,
-  cron: [
-    "*/5 * * * *": {Mybs.RaceFetcher, :start}
+config :mybs, Mybs.Scheduler,
+  jobs: [
+    {"*/5 * * * *", {Mybs.RaceFetcher, :start, []}}
   ]
 
 # Import environment specific config. This must remain at the bottom
